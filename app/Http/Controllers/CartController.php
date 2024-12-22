@@ -53,5 +53,5 @@ class CartController extends Controller
         return redirect('orders')->with('message', 'Order placed successfully');
     }
 
-    
+   
 }

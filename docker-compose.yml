@@ -1,12 +1,12 @@
-#version: '3.8'
+
 
 services:
-  # Laravel application container
+  
   app:
     build:
       context: .
     image: laravel-app
-    container_name: laravel-app
+    container_name: cart
     restart: unless-stopped
     working_dir: /var/www
     volumes:
@@ -14,7 +14,7 @@ services:
     networks:
       - laravel_network
     ports:
-      - "8000:9000"  # Map port 8000 on host to port 9000 inside the container
+      - "8000:9000"  
 
   # MySQL container
   db:
@@ -31,7 +31,7 @@ services:
     networks:
       - laravel_network
 
-  # Nginx container (optional, for serving Laravel)
+  # Nginx container
   nginx:
     image: nginx:latest
     container_name: nginx
@@ -40,7 +40,7 @@ services:
       - ./nginx:/etc/nginx/conf.d
       - .:/var/www
     ports:
-      - "8080:80"  # Map port 8080 on host to port 80 inside the container
+      - "8080:80"  
     networks:
       - laravel_network
 
